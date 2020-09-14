@@ -52,7 +52,8 @@
                   />
                 </div>
 		${captcha_prompt}
-                <button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn btn-success" name="method" value="add">加入</button>
+		<button type="submit" class="btn btn-danger" name="method" value="remove">移除</button>
               </form>
             </div>
           </div>
@@ -112,6 +113,7 @@
           url: "/drive",
           data: JSON.stringify({
             emailAddress: $("input[id=emailAddress]").val(),
+            method: $(event.originalEvent.submitter).val(),
             captcha_token:  ${captcha_token},
           }),
           success: function(data) {
@@ -132,7 +134,7 @@
       object-fit: cover;
     }
   </style>
-	<style>
+  <style>
 body:before{
     top: 0;
     left: 0;
